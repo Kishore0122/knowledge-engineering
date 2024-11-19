@@ -176,13 +176,14 @@ document.addEventListener('DOMContentLoaded', function () {
             video.currentTime = 0; // Optionally reset video to the start
         });
     });
-
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbydA7-R6Fk4a_WxlKbsQ9p4rNaLWsAxH6-D5_3eZZEV380W6Coa0UXgSaRtjnrNUzkRZQ/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxOjClxdFV6JjPDEQprXRdPpN6ae10JwsJpULNmJpUQvwiB6g-u4sasq09oSqKrbNYq/exec';
     const form = document.getElementById('contactForm');
     const popup = document.getElementById('popup');
+    
     form.addEventListener('submit', e => {
         e.preventDefault();
         document.getElementById('submit').disabled = true;
+    
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
                 showPopup("Message sent successfully!");
@@ -196,13 +197,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('submit').disabled = false;
             });
     });
+    
     function showPopup(message) {
         popup.textContent = message;
         popup.classList.add('show');
         setTimeout(() => {
             popup.classList.remove('show');
         }, 5000);
-    }  
+    }
+    
 });
 /*const typed = new Typed('.text', {
     strings: ['Department of ','Knowledge engineering'],
